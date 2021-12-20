@@ -25,12 +25,12 @@ const Login = ({ setVista }) => {
         var res;
         try {
             res = await axios.post(`/.netlify/backend/app/auth/login`, login);
+            localStorage.setItem("authToken", res.data.token);
+            setVista("todolist");
         } catch {
+            console.log(res.status);
             setValidacionLogin(true);
-            return;
         }
-        localStorage.setItem("authToken", res.data.token);
-        setVista("todolist");
     }
 
     const onSubmit = async (e) => {
