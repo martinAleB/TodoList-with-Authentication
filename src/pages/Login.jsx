@@ -24,7 +24,7 @@ const Login = ({ setVista }) => {
     const loginUser = async () => {
         var res;
         try {
-            res = await axios.post(`${config.apiUrl}/auth/login`, login);
+            res = await axios.post(`/.netlify/backend/app/auth/login`, login);
         } catch {
             setValidacionLogin(true);
             return;

@@ -7,7 +7,7 @@ export const getTasks = () => {
     const authToken = localStorage.getItem("authToken");
     try {
       await axios
-        .post(`${config.apiUrl}/tasks/getAll`, { authToken })
+        .post(`/.netlify/backend/app/tasks/getAll`, { authToken })
         .then((res) => {
           console.log(res.data);
           dispatch({
@@ -27,7 +27,10 @@ export const addTask = (task) => {
     console.log(token);
     try {
       await axios
-        .post(`${config.apiUrl}/tasks/add`, { task: task, authToken: token })
+        .post(`/.netlify/backend/app/tasks/add`, {
+          task: task,
+          authToken: token,
+        })
         .then((res) => {
           console.log(res.data.task);
           dispatch({ type: Actions.tasks.add, payload: res.data.task });
@@ -43,7 +46,7 @@ export const deleteTask = (id) => {
   return async (dispatch, getState) => {
     const token = localStorage.getItem("authToken");
     await axios
-      .delete(`${config.apiUrl}/tasks/delete`, {
+      .delete(`/.netlify/backend/app/tasks/delete`, {
         data: { id: id, authToken: token },
       })
       .then((res) => {
