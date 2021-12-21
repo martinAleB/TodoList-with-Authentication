@@ -23,7 +23,7 @@ const Signup = ({ setVista }) => {
     const signupUser = async () => {
         var res;
         try {
-            res = await axios.post(`/.netlify/backend/app/auth/signup`, signup);
+            res = await axios.post("/.netlify/functions/app/auth/signup", signup);
         } catch {
             setValidacionSignup(true);
             return;
