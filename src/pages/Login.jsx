@@ -24,7 +24,7 @@ const Login = ({ setVista }) => {
     const loginUser = async () => {
         var res;
         try {
-            res = await axios.post("/.netlify/backend/app/auth/login", login);
+            res = await axios.post("/.netlify/functions/app/auth/login", login);
             localStorage.setItem("authToken", res.data.token);
             setVista("todolist");
         } catch (err) {

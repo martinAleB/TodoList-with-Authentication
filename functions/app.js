@@ -29,7 +29,7 @@ globalRouter.use("/", indexRouter);
 globalRouter.use("/tasks", tasksRouter);
 globalRouter.use("/auth", authRouter);
 
-app.use("/.netlify/backend/app", globalRouter);
+app.use("/.netlify/functions/app", globalRouter);
 
 // catch 404 and forward to error handler
 /*app.use(function (req, res, next) {
