@@ -6,6 +6,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
 
+var globalRouter = express.Router();
 var indexRouter = require("./routes/index");
 var tasksRouter = require("./routes/tasks");
 var authRouter = require("./routes/auth");
@@ -23,9 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/tasks", tasksRouter);
-app.use("/auth", authRouter);
+globalRouter.use("/", indexRouter);
+globalRouter.use("/tasks", tasksRouter);
+globalRouter.use("/auth", authRouter);
+
+app.use("/.netlify/backend/app", globalRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
