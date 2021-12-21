@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { config } from '../config';
 import React, { useState } from 'react'
 import FormError from '../components/FormError';
 import FormDangerMsg from '../components/FormDangerMsg';

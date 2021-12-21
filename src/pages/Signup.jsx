@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import FormDangerMsg from '../components/FormDangerMsg';
 import FormError from '../components/FormError';
-import { config } from '../config';
 
 const Signup = ({ setVista }) => {
     const [signup, setSignup] = useState({
@@ -24,12 +23,11 @@ const Signup = ({ setVista }) => {
         var res;
         try {
             res = await axios.post("/.netlify/functions/app/auth/signup", signup);
+            localStorage.setItem("authToken", res.data.token);
+            setVista("todolist");
         } catch {
             setValidacionSignup(true);
-            return;
         }
-        localStorage.setItem("authToken", res.data.token);
-        setVista("todolist");
     }
 
     const onSubmit = e => {
