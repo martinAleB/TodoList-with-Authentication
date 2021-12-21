@@ -12,6 +12,7 @@ const Login = ({ setVista }) => {
     });
     const [validacionLoginUsername, setValidacionLoginUsername] = useState("");
     const [validacionLoginPassword, setValidacionLoginPassword] = useState("");
+    const [validacionLogin, setValidacionLogin] = useState(false);
 
     const onChange = e => {
         setLogin({
