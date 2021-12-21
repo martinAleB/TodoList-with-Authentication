@@ -28,6 +28,7 @@ const Login = ({ setVista }) => {
             localStorage.setItem("authToken", res.data.token);
             setVista("todolist");
         } catch (err) {
+            alert(err);
             setValidacionLogin(true);
         }
     }
