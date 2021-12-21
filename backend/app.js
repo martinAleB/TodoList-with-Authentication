@@ -5,6 +5,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
+var serverless = require("serverless-http");
 
 var globalRouter = express.Router();
 var indexRouter = require("./routes/index");
@@ -46,4 +47,4 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+module.exports.handler = serverless(app);
