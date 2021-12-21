@@ -5,6 +5,7 @@ var serverless = require("serverless-http");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
+var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 var tasksRouter = require("./routes/tasks");
@@ -15,6 +16,11 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+mongoose.connect(process.env.dbConnectionString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 var globalRouter = express.Router();
 

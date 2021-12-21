@@ -1,4 +1,3 @@
-require("../db");
 const express = require("express");
 const mongoose = require("mongoose");
 const Task = require("../models/Task");
