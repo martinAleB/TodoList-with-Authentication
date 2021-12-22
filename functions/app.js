@@ -22,6 +22,8 @@ mongoose.connect(process.env.dbConnectionString, {
   useUnifiedTopology: true,
 });
 
+console.log("Ya conecte a la base de datos");
+
 var globalRouter = express.Router();
 
 globalRouter.use("/", indexRouter);
