@@ -43,6 +43,7 @@ router.post("/login", async (req, res, next) => {
     // Chequeo que se hayan recibido todos los datos necesarios
     return res.status(400).json({ status: "Error" }); // Devuelvo un error en caso de que no sea asi
   }
+  console.log("Estoy proximo a findear el username");
   const loginUser = await findUserByUsername(username);
   console.log("Ya findee el username");
   if (loginUser === null) {
