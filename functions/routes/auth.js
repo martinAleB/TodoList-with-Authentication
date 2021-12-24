@@ -32,7 +32,7 @@ router.post("/signup", async (req, res, next) => {
     return res.status(403).json({ status: "Username unavailable" }); // Ese nombre de usuario no está disponible
   }
   const user = new User(req.body); // Creo el usuario con los datos
-  const hashing = await bcrypt.genSalt(SALT_NUMBER); // Genero un hasheo
+  const hashing = await bcrypt.genSalt(process.env.SALT_NUMBER); // Genero un hasheo
   user.password = await bcrypt.hash(user.password, hashing); // Hasheo la password
   await user.save(); // Guardo el usuario en la base de datos
   const token = getToken(user);
