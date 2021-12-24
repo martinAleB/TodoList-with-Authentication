@@ -7,7 +7,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case Actions.tasks.getTasksList:
-      console.log(action.payload);
       return { ...state, tasks: action.payload };
     case Actions.tasks.add:
       return { ...state, tasks: [...state.tasks, action.payload] };
@@ -21,5 +20,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-//export default applyMiddleware(thunk)(createStore(reducer));
 export default reducer;

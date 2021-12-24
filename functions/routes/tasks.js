@@ -11,7 +11,6 @@ router.post("/getAll", async (req, res, next) => {
 
   var id_user = validToken(authToken);
   if (!id_user) {
-    console.log(id_user);
     return res.status(401).json({ status: "Unauthorized" });
   }
 

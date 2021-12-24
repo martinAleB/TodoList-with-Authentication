@@ -25,7 +25,8 @@ const Signup = ({ setVista }) => {
             res = await axios.post("/.netlify/functions/app/auth/signup", signup);
             localStorage.setItem("authToken", res.data.token);
             setVista("todolist");
-        } catch {
+        } catch (err) {
+            console.log(err);
             setValidacionSignup(true);
         }
     }

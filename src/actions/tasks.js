@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Actions } from "../store/actionTypes";
-import { config } from "../config";
 
 export const getTasks = () => {
   return async (dispatch, getState) => {
@@ -15,8 +14,8 @@ export const getTasks = () => {
             payload: res.data.tasks,
           });
         });
-    } catch {
-      console.log(authToken);
+    } catch (err) {
+      console.log(err);
     }
   };
 };
@@ -24,7 +23,6 @@ export const getTasks = () => {
 export const addTask = (task) => {
   return async (dispatch, getState) => {
     const token = localStorage.getItem("authToken");
-    console.log(token);
     try {
       await axios
         .post("/.netlify/functions/app/tasks/add", {
@@ -32,11 +30,10 @@ export const addTask = (task) => {
           authToken: token,
         })
         .then((res) => {
-          console.log(res.data.task);
           dispatch({ type: Actions.tasks.add, payload: res.data.task });
         });
-    } catch {
-      console.log(token);
+    } catch (err) {
+      console.log(err);
     }
   };
 };
@@ -50,7 +47,6 @@ export const deleteTask = (id) => {
         data: { id: id, authToken: token },
       })
       .then((res) => {
-        console.log(id);
         dispatch({ type: Actions.tasks.delete, payload: id });
       });
   };
